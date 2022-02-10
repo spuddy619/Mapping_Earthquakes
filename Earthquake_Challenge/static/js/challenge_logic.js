@@ -120,9 +120,9 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   // Then we add the earthquake layer to our map.
   allEarthquakes.addTo(map);
 
-///////////////////////
-///////////////////// Retrieve 4.5 mag Json
-///////////////////////
+/////////////////////
+/////////////////////Retrieve 4.5 mag Json
+/////////////////////
 
 // 3. Retrieve the major earthquake GeoJSON data >4.5 mag for the week.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson").then(function(data) {
@@ -145,42 +145,26 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
     // and what about magnitude == 5?
   function getColor(magnitude){
     if (magnitude < 5){
-      return "#ea2c2c";
+      return "#e67a7a";
     }
-
-    if(magnitude >= 5){
-      return "#ea822c";
+    else if (magnitude <= 6){
+      return "#851515";
     }
-
-    if(magnitude > 6){
-      return "#98ee00";
+    else {
+      return "#ff0000"
     }
   };
 
-  // 6. Use the function that determines the radius of the earthquake marker based on its magnitude. (Copied from first instance of getRadius)
-    //or am i supposed to use (magnitude < 5), (magnitude >= 5), (magnitude > 6)
+  // 6. Use the function that determines the radius of the earthquake marker based on its magnitude. 
 
-  // function getRadius(magnitude) {
-  //   if (magnitude === 0) {
-  //     return 1;
-  //   }
-  //   return magnitude * 4;
-  // }
-
-  // OR 
-
-  function getRadius(magnitude){
-    if(magnitude < 5){
+  function getRadius(magnitude) {
+    if (magnitude === 0) {
       return 1;
     }
-    if (magnitude >= 5) {
-      return 2;
-    }
-
-    if (magnitude > 6){
-      return 5;
-    }
+    return magnitude * 4;
   };
+
+
 
   // 7. Creating a GeoJSON layer with the retrieved data that adds a circle to the map 
   // sets the style of the circle, and displays the magnitude and location of the earthquake
@@ -188,8 +172,12 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
   L.geoJson(data, {
     pointToLayer: function(feature, latlng){
       return L.circleMarker(latlng);
+    },
+    style: styleInfo,
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
     }
-  });
+  }).addTo(majorEarthquakes);
   // 8. Add the major earthquakes layer to the map.
   majorEarthquakes.addTo(map);
 

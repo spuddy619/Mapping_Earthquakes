@@ -8,7 +8,7 @@ The coding for the following visualizations can be found in the "static" folder 
 Here is the visualization:
 ![image](https://user-images.githubusercontent.com/72320203/153337526-17b13bf3-f439-42d8-bfec-f658d9bafda8.png)
 
-The tectonic plates are marked with the red lines going across the maps and the the earthquakes we gathered data on from the USGS are marked by the circular markers of various colors and sizes. The colors and the sizes denote the magnitude of the the earthquakes. The larger and more red a marker is, the higher the magnitude of that earthquake. The color scale for earthquake magnitudes can be seen in the legend at the bottom right corner.
+The tectonic plates are marked with the red lines going across the maps and the the earthquakes we gathered data from the USGS are marked by the circular markers of various colors and sizes. The colors and the sizes denote the magnitude of the the earthquakes. The larger and more red a marker is, the higher the magnitude of that earthquake. The color scale for earthquake magnitudes can be seen in the legend at the bottom right corner.
 
 At the top right corner, there is the layers icon that can select 3 different map modes (Streets, Satellite, Dark) as well as a filter to choose what information (Earthquakes, Tectonic Plates, Major Earthquakes) to display on the map. The "Streets" map is displayed above with all the information. 
 
